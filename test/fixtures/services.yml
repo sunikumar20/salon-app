@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  duration: 2021-10-26 18:51:44
+  price: 1.5
+  salon: one
+
+two:
+  name: MyString
+  description: MyText
+  duration: 2021-10-26 18:51:44
+  price: 1.5
+  salon: two

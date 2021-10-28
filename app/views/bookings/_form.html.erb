@@ -1,0 +1,25 @@
+<%= form_with(model: [@salon, booking], local: true) do |form| %>
+  <% if booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+        <% booking.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <% @salon.services.each_with_index do |service, index| %>
+    <div>
+      <%= check_box_tag 'booking[service_ids][]', service.id, service_ids.include?(service.id) %> : <%= service.name %> | price : <%= service.price %> | duration : <%= service.duration %>
+      | select date: <%= select_tag "select_days", options_for_select((Date.today..(Date.today + 7.days)).to_a) %>
+      | select time from: <%= %> 
+    <div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
