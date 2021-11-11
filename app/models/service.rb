@@ -1,5 +1,6 @@
 class Service < ApplicationRecord
   belongs_to :salon
+  has_many :bookings_services
   has_and_belongs_to_many :employees
   has_and_belongs_to_many :bookings
 

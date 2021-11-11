@@ -24,6 +24,10 @@ class BookingsController < ApplicationController
   # POST /bookings or /bookings.json
   def create
     @booking = @salon.bookings.new(booking_params)
+    selected_days = params[:select_days]
+    selected_time = params[:select_time]
+    timeslot = Time.parse("#{selected_days} #{selected_time}")
+    @booking.bookings_services.build(service_id: params[:booking][:service_ids][0], timeslot: timeslot)
 
     respond_to do |format|
       if @booking.save
@@ -70,6 +74,6 @@ class BookingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def booking_params
-      params.require(:booking).permit(:salon_id, :total_price, service_ids: [])
+      params.require(:booking).permit(:salon_id, :total_price, :service_ids)
     end
 end

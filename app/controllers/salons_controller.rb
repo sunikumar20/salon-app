@@ -3,7 +3,7 @@ class SalonsController < ApplicationController
 
   # GET /salons or /salons.json
   def index
-    @salons = Salon.search(params[:search])
+    @salons = Salon.search(search_params)
   end
 
   # GET /salons/1 or /salons/1.json
@@ -65,5 +65,9 @@ class SalonsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def salon_params
       params.require(:salon).permit(:company_name, :gstin, :pan_number, :address)
+    end
+
+    def search_params
+      params.permit(:query, :sort_by, :order, :page)
     end
 end

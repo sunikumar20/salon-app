@@ -4,7 +4,7 @@ class ServicesController < ApplicationController
 
   # GET salons/:salon_id/services or /services.json
   def index
-    @services = @salon.services
+    @services = @salon.services.includes(:bookings_services)
   end
 
   # GET salons/:salon_id/services/1 or /services/1.json
