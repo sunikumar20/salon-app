@@ -1,24 +1,16 @@
-# README
+API details
+Paginated Search for businesses and sort by price (lowest to highest, highest to lowest)
+GET localhost:3000/salons.json?query=abc&sort_by=price&order=desc&page=3
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+List available services and time slots for a particular business
+GET localhost:3000/salons/3/services.json
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Book a service at a business
+POST localhost:3000/salons/3/bookings.json
+{
+ "booking": {
+	"service_ids": ["1"]
+ },
+ "select_days": "2021-11-14",
+ "select_time": "10:15 AM"
+}
